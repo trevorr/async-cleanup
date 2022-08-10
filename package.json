@@ -1,0 +1,59 @@
+{
+  "name": "async-cleanup",
+  "version": "1.0.0",
+  "description": "Asynchronous process cleanup for Node.js and Typescript",
+  "keywords": [
+    "async",
+    "cleanup",
+    "exit",
+    "process",
+    "signal"
+  ],
+  "homepage": "https://github.com/trevorr/async-cleanup#readme",
+  "bugs": {
+    "url": "https://github.com/trevorr/async-cleanup/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trevorr/async-cleanup.git"
+  },
+  "license": "ISC",
+  "author": "Trevor Robinson",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.build.json",
+    "examples": "concurrently 'ts-node examples/readme.ts' 'ts-node examples/readme.ts' 'ts-node examples/readme.ts'",
+    "lint": "eslint src",
+    "lint:ci": "eslint src --format junit --output-file test-results/eslint/eslint.xml",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run test && npm run lint",
+    "prettier": "prettier --write src",
+    "test": "jest src",
+    "test:ci": "jest src --ci --runInBand --reporters=default --reporters=jest-junit"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.7.1",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "concurrently": "^7.3.0",
+    "eslint": "^8.21.0",
+    "jest": "^28.1.3",
+    "jest-junit": "^14.0.0",
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  },
+  "jest-junit": {
+    "outputDirectory": "test-results/junit",
+    "outputName": "junit.xml"
+  },
+  "prettier": {
+    "semi": true
+  }
+}
